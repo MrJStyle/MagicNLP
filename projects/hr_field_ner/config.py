@@ -7,15 +7,19 @@ from magic_nlp.models import Device
 
 
 class Config(BaseModel):
-    model_name_or_path: str = Field(...)
-    output_dir: str = Field(...)
+    model_name_or_path: str = Field("bert-base-chinese")
+    checkpoint_output_dir: str = Field("checkpoint")
+    model_checkpoint_file: str = Field("")
+    tag_path: str = Field("tag.dict")
+    train_data: str = Field("")
+    test_data: str = Field("")
     max_seq_length: int = Field(128)
-    batch_size: int = Field(8)
+    batch_size: int = Field(16)
     learning_rate: float = Field(5e-5)
     weight_decay: float = Field(0.0)
     adam_epsilon: float = Field(1e-8)
     max_grad_norm: float = Field(1.0)
-    num_train_epochs: int = Field(3)
+    num_train_epochs: int = Field(2)
     max_steps: int = Field(-1)
     warmup_steps: int = Field(0)
     logging_steps: int = Field(1)
@@ -29,7 +33,7 @@ def parse_argument(parser: ArgumentParser) -> Config:
         "--model_name_or_path",
         default=None,
         type=str,
-        required=True,
+        # required=True,
         help="Path to pre-trained model or shortcut name selected in the list: "
              + ", ".join(list(BertTokenizer.pretrained_init_configuration.keys()))
     )
@@ -37,9 +41,10 @@ def parse_argument(parser: ArgumentParser) -> Config:
         "--output_dir",
         default=None,
         type=str,
-        required=True,
+        # required=True,
         help="The output directory where the model predictions and checkpoints will be written."
     )
+    parser.add_argument("--tag_path", default="tag.dict", type=str, help="sequence label info")
     parser.add_argument(
         "--max_seq_length",
         default=128,
