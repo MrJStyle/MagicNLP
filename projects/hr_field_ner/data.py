@@ -56,7 +56,7 @@ class Data:
             tokenizer: BertTokenizer,
             no_entity_id: int,
             max_seq_len: int = 128
-    ):
+    ) -> Dict:
         words, labels = example["words"], example["labels"]
         tokenized_input = tokenizer(
             words,
