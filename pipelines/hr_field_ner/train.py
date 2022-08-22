@@ -81,13 +81,13 @@ def train():
 
 
 if __name__ == '__main__':
-    # data = Data("/home/mrj/Code/Personal/Python/magic_nlp/projects/hr_field_ner/tag.dict")
+    # data = Data("/home/mrj/Code/Personal/Python/magic_nlp/pipelines/hr_field_ner/tag.dict")
     # tokenizer = BertTokenizer.from_pretrained("bert-base-chinese")
-    # ds = data.load_dataset("/home/mrj/Code/Personal/Python/magic_nlp/projects/hr_field_ner/data/train_cert.tsv")
+    # ds = data.load_dataset("/home/mrj/Code/Personal/Python/magic_nlp/pipelines/hr_field_ner/data/train_cert.tsv")
     # dl = data.make_dataloader(ds, tokenizer, 10, 32)
     # print(next(iter(dl)))
 
     # print(config)
-    # print(Data.load_label_vocab("/home/mrj/Code/Personal/Python/magic_nlp/projects/hr_field_ner/tag.dict"))
+    # print(Data.load_label_vocab("/home/mrj/Code/Personal/Python/magic_nlp/pipelines/hr_field_ner/tag.dict"))
 
     train()
